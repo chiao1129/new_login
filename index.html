@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Netflix</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <link rel="icon" href="little.png" type="image/png">
 </head>
 <body>
@@ -15,21 +15,21 @@
             <img src="logo1.png" alt="Netflix Logo" class="logo">
         </a>
         <h1 data-translate="登入">登入</h1>
-        <form>
+        <form id="login-form">
             <input type="email" name="email" data-translate="電子郵件地址或手機號碼" placeholder="電子郵件地址或手機號碼" required>
             <input type="password" name="password" data-translate="密碼" placeholder="密碼" required>
             <button type="submit" data-translate="登入">登入</button>
 
             <div class="or-label" data-translate="或">或</div>
             <button type="button" class="login-code-button" data-translate="使用登入碼">使用登入碼</button>
-            <p class="forgot-password" ><a href="https://www.netflix.com/tw/LoginHelp" style="color: white" data-translate="忘記密碼?">忘記密碼?</a></p>
+            <p class="forgot-password"><a href="https://www.netflix.com/tw/LoginHelp" style="color: white" data-translate="忘記密碼?">忘記密碼?</a></p>
         </form>
         <div class="options">
             <label><input type="checkbox"> <span data-translate="記住我">記住我</span></label>
         </div>
         <p class="join-netflix"> <a style="color: #cccc; text-decoration: none;" data-translate="尚未加入 Netflix？">尚未加入 Netflix？</a> <a href="https://www.netflix.com/tw/" style="color: white" data-translate="馬上註冊。">馬上註冊。</a></p>
         <p class="captcha-info"> <span data-translate="此頁面受到 Google reCAPTCHA 保護，以確認您不是機器人。">此頁面受到 Google reCAPTCHA 保護，以確認您不是機器人。</span> <span class="further-understanding" onclick="toggleRecaptchaInfo()" data-translate="進一步了解。">進一步了解。</span></p>
-        <p class="recaptcha-policy" style="display: none;" data-translate="由 Google reCAPTCHA 收集的資訊受 Google《隱私權聲明》與《服務條款》約束，用來提供、維持並提升 reCAPTCHA 服務，並且維繫一般安全（Google 不會用於個人化廣告）。">由 Google reCAPTCHA 收集的資訊受 Google《<a href="https://policies.google.com/privacy" target="_blank" style="color: royalblue; " data-translate="隱私權聲明">隱私權聲明</a>》與《<a href="https://policies.google.com/terms" target="_blank" style="color: royalblue;">服務條款</a>》約束，用來提供、維持並提升 reCAPTCHA 服務，並且維繫一般安全（Google 不會用於個人化廣告）。</p>
+        <p class="recaptcha-policy" style="display: none;" data-translate="由 Google reCAPTCHA 收集的資訊受 Google《隱私權聲明》與《服務條款》約束，用來提供、維持並提升 reCAPTCHA 服務，並且維繫一般安全（Google 不會用於個人化廣告）。">由 Google reCAPTCHA 收集的資訊受 Google《<a href="https://policies.google.com/privacy" target="_blank" style="color: royalblue;" data-translate="隱私權聲明">隱私權聲明</a>》與《<a href="https://policies.google.com/terms" target="_blank" style="color: royalblue;">服務條款</a>》約束，用來提供、維持並提升 reCAPTCHA 服務，並且維繫一般安全（Google 不會用於個人化廣告）。</p>
     </div>
 </div>
 <footer>

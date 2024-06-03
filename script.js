@@ -1,4 +1,6 @@
 // script.js
+
+// Function to toggle reCAPTCHA info visibility
 function toggleRecaptchaInfo() {
     var recaptchaPolicy = document.querySelector('.recaptcha-policy');
     var furtherUnderstanding = document.querySelector('.further-understanding');
@@ -12,9 +14,7 @@ function toggleRecaptchaInfo() {
     }
 }
 
-// JavaScript
-
-// 定义翻译函数和翻译词典
+// Define translation function and dictionary
 var translations = {
     '登入': 'Sign in',
     '或': 'OR',
@@ -37,8 +37,8 @@ var translations = {
     'Cookie 設定': 'Cookie Preferences',
     '企業資訊': 'Corporate Information',
     '請輸入有效的電子郵件或電話號碼。': 'Please enter a valid email or phone number.',
-    '您的密碼必須包含 4 至 60 個字元。':'Your password must contain between 4 and 60 characters.'
-    // 添加更多需要翻译的文本
+    '您的密碼必須包含 4 至 60 個字元。': 'Your password must contain between 4 and 60 characters.'
+    // Add more translations as needed
 };
 
 function translateToEnglish() {
@@ -78,68 +78,33 @@ function translateBasedOnSelectedLanguage() {
     }
 }
 
-// 处理 reCAPTCHA 信息显示的函数
-function toggleRecaptchaInfo() {
-    var recaptchaPolicy = document.querySelector('.recaptcha-policy');
-    var furtherUnderstanding = document.querySelector('.further-understanding');
+// Translate page on language change
+document.getElementById('language').addEventListener('change', translateBasedOnSelectedLanguage);
 
-    if (recaptchaPolicy.style.display === 'none') {
-        recaptchaPolicy.style.display = 'block';
-        furtherUnderstanding.style.display = 'none';
-    } else {
-        recaptchaPolicy.style.display = 'none';
-        furtherUnderstanding.style.display = 'inline'; // 或 'inline-block'，根據需要
-    }
-}
+// Initial translation based on default language
+document.addEventListener('DOMContentLoaded', translateBasedOnSelectedLanguage);
 
-document.addEventListener('DOMContentLoaded', function() {
-    var emailInput = document.querySelector('input[name="email"]');
-    var passwordInput = document.querySelector('input[name="password"]');
-    var loginButton = document.querySelector('button[type="submit"]');
-    var languageSelect = document.getElementById('language');
+// Form submission handler
+document.getElementById('login-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
 
-    loginButton.addEventListener('click', function(event) {
-        var emailErrorMessage = document.querySelector('#email-error-message');
-        var passwordErrorMessage = document.querySelector('#password-error-message');
+    var email = event.target.email.value;
+    var password = event.target.password.value;
 
-        if (emailInput.value.trim() === '') {
-            event.preventDefault();
-            emailInput.style.borderColor = 'red';
-            if (!emailErrorMessage) {
-                emailInput.insertAdjacentHTML('afterend', '<div id="email-error-message" class="error-message" data-translate="請輸入有效的電子郵件或電話號碼。">請輸入有效的電子郵件或電話號碼。</div>');
-            }
-        } else {
-            emailInput.style.borderColor = ''; // Reset border color
-            if (emailErrorMessage) {
-                emailErrorMessage.remove(); // Remove error message if exists
-            }
-        }
-
-        if (passwordInput.value.trim() === '') {
-            event.preventDefault();
-            passwordInput.style.borderColor = 'red';
-            if (!passwordErrorMessage) {
-                passwordInput.insertAdjacentHTML('afterend', '<div id="password-error-message" class="error-message" data-translate="您的密碼必須包含 4 至 60 個字元。">您的密碼必須包含 4 至 60 個字元。</div>');
-            }
-        } else {
-            passwordInput.style.borderColor = ''; // Reset border color
-            if (passwordErrorMessage) {
-                passwordErrorMessage.remove(); // Remove error message if exists
-            }
-        }
-
-        // 调用翻译函数以翻译动态生成的错误消息
-        translateBasedOnSelectedLanguage();
-    });
-
-    // 监听语言选择发生变化时进行翻译
-    languageSelect.addEventListener('change', translateBasedOnSelectedLanguage);
-
-    // 页面加载时执行一次初始翻译
-    translateBasedOnSelectedLanguage();
+    // Send the data to the server
+    fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: email, password: password })
+    })
+        .then(response => response.json())
+        .then(data => {
+            // Handle the server response here
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
 });
-
-
-
-
-
