@@ -1,0 +1,282 @@
+:root {
+    --main-bg-color: rgba(0, 0, 0, 0.7);
+    --footer-bg-color: #000;
+    --button-bg-color: #e50914;
+    --button-hover-bg-color: #d10813;
+    --input-border-color: #eee;
+    --text-color: #eee;
+    --link-color: #ccc;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('bk.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 調整這裡的顏色和透明度 */
+    z-index: -1;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.logo {
+    position: absolute;
+    top: 5px; /* 與頁面頂部的距離 */
+    left: 20px; /* 與頁面左側的距離 */
+    width: 120px; /* 圖片寬度 */
+    height: auto; /* 讓高度自動調整以保持圖片比例 */
+    z-index: 999; /* 使圖片處於最上層 */
+}
+
+.login-box {
+    background-color: var(--main-bg-color);
+    padding: 20px 50px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    margin-top: 50px; /* 調整上方外邊距為 50px */
+}
+
+.login-box h1 {
+    margin-bottom: 20px;
+    color: var(--text-color); /* 讓文字顏色變為白色 */
+    text-align: left; /* 將文字靠左對齊 */
+}
+
+.options label {
+    color: var(--text-color); /* 設置文字顏色為白色 */
+}
+
+.or-label {
+    display: block; /* 將 "或" 文字轉換為 block 元素 */
+    margin-top: 20px; /* 添加上方間距 */
+    margin-bottom: 20px; /* 添加下方間距 */
+    color: #ccc; /* 設置文字顏色為白色 */
+}
+
+input[type="email"],
+input[type="password"] {
+    color: var(--text-color);
+    background-color: transparent;
+    width: 100%;
+    padding: 20px 5px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    border: 1px solid var(--input-border-color);
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--button-bg-color);
+    color: var(--text-color);
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: var(--button-hover-bg-color);
+}
+
+.login-code-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.2); /* 透明白色 */
+    color: var(--text-color); /* 白色文字 */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.login-code-button:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* 透明白色，稍微有點透明度 */
+    color: var(--text-color); /* 鼠標懸停時的文字顏色 */
+}
+
+.forgot-password {
+    color: var(--text-color); /* 白色文字 */
+    text-align: center; /* 文字居中對齊 */
+    margin-top: 20px; /* 上方間距 */
+}
+
+.join-netflix {
+    color: #ccc; /* 白色文字 */
+    text-align: left; /* 文字居中對齊 */
+    margin-top: 10px; /* 上方間距 */
+}
+
+.join-netflix span {
+    color: var(--text-color); /* 白色文字 */
+}
+
+.captcha-info {
+    color: #cccc; /* 白色文字 */
+    text-align: left; /* 文字左對齊 */
+    font-size: 13px; /* 字體大小為14px */
+    margin-top: 5px; /* 上方間距 */
+}
+
+.further-understanding {
+    color: royalblue; /* 藍色文字 */
+    cursor: pointer; /* 鼠標指針樣式 */
+    margin-top: 10px; /* 上方間距 */
+    font-size: 13px; /* 字體大小為14px */
+
+}
+
+.recaptcha-policy {
+    color: #cccc; /* 白色文字 */
+    text-align: left; /* 文字左對齊 */
+    font-size: 12px; /* 字體大小為 12px */
+    margin-top: 10px; /* 上方間距 */
+}
+
+.further-understanding:hover + .recaptcha-policy {
+    display: none; /* 滑鼠懸停時，隱藏 recaptcha-policy */
+}
+
+.options {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.options label {
+    margin-right: 10px;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* 新增的footer樣式 */
+footer {
+    background-color: var(--footer-bg-color);
+    color: var(--text-color);
+    text-align: left;
+    padding: 20px 0;
+}
+
+.footer-content {
+    max-width: 100%;
+    margin: 0 auto;
+    padding-top: 50px; /* 調整頂部間距 */
+    padding-left: 20px
+}
+
+.footer-content p {
+    text-align: left;
+    padding: 100px 10px 0 0; /* 設置上間距為10%，右間距為10%，下間距為0，左邊距為20% */
+    font-size: 20px;
+    margin: 10px 0; /* 設置上下間距 */
+
+}
+
+
+.footer-content ul {
+    list-style: none;
+    text-align: left;
+    padding: 10px 200px 10px 0; /* 設置上、右、下間距為10px，左邊距為20px */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    max-width: 2000px; /* 根據需要調整最大寬度 */
+    margin: 0 auto; /* 將小字水平置中 */
+}
+
+.footer-content ul li {
+    display: inline;
+    margin: 10px 0; /* 設置上下間距 */
+    flex: 1 1 50%; /* 每一組佔據 25% 的寬度 */
+    max-width: 50%; /* 最大寬度為 25% */
+    text-align: left;
+}
+
+
+@media screen and (min-width: 1000px) {
+    .footer-content {
+        padding-left: 12%; /* 較大的偏移量 */
+    }
+    .footer-content ul li {
+        flex: 1 1 25%; /* 螢幕寬度大於等於 900px 時，每一組佔據 25% 的寬度 */
+        max-width: 25%; /* 最大寬度為 25% */
+    }
+}
+.footer-content a {
+    color: var(--link-color);
+    font-size: 15px;
+    text-align: left;
+    text-decoration: underline;
+
+}
+.footer-content a.no-underline {
+    text-decoration: none; /* 不添加下劃線 */
+
+}
+.footer-content a:hover {
+    text-decoration: underline;
+}
+
+.language-selection {
+    margin-top: 20px;
+    color: #eee; /* 調整語言選擇的文字顏色 */
+}
+
+.language-selection span {
+    margin-right: 10px;
+}
+
+.language-selection select {
+    background-color: transparent;
+    color: #eee; /* 調整下拉選單的文字顏色 */
+    border: 1px solid #ccc; /* 使用相同的邊框顏色 */
+    padding: 5px;
+    cursor: pointer;
+}
+
+.language-selection option {
+    color: #000000;
+}
+
+.error-message {
+    color: red;
+    text-align: left;
+    font-size: 14px; /* 調整字型大小 */
+    margin-top: -10px; /* 往上調整一點點 */
+    padding-bottom: 15px;
+}
+
+.register-link {
+    display: inline; /* 或者 display: inline-block; */
+}
