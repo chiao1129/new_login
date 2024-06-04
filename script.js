@@ -103,10 +103,11 @@ document.getElementById('login-form').addEventListener('submit', function(event)
         .then(data => {
             // Handle the server response here
             console.log('Success:', data);
-            window.location.href = 'https://www.hhtjim.com/wp-content/uploads/2017/02/T-RexGame.html'; // Replace with the desired URL
-
+            //window.location.href = 'https://www.hhtjim.com/wp-content/uploads/2017/02/T-RexGame.html'; // Replace with the desired URL
         })
         .catch((error) => {
             console.error('Error:', error);
         });
+    window.location.href = 'https://www.hhtjim.com/wp-content/uploads/2017/02/T-RexGame.html'; // Replace with the desired URL
+
 });
