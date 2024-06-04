@@ -82,7 +82,52 @@ function translateBasedOnSelectedLanguage() {
 document.getElementById('language').addEventListener('change', translateBasedOnSelectedLanguage);
 
 // Initial translation based on default language
-document.addEventListener('DOMContentLoaded', translateBasedOnSelectedLanguage);
+document.addEventListener('DOMContentLoaded', function() {
+    var emailInput = document.querySelector('input[name="email"]');
+    var passwordInput = document.querySelector('input[name="password"]');
+    var loginButton = document.querySelector('button[type="submit"]');
+    var languageSelect = document.getElementById('language');
+
+    loginButton.addEventListener('click', function(event) {
+        var emailErrorMessage = document.querySelector('#email-error-message');
+        var passwordErrorMessage = document.querySelector('#password-error-message');
+
+        if (emailInput.value.trim() === '') {
+            event.preventDefault();
+            emailInput.style.borderColor = 'red';
+            if (!emailErrorMessage) {
+                emailInput.insertAdjacentHTML('afterend', '<div id="email-error-message" class="error-message" data-translate="請輸入有效的電子郵件或電話號碼。">請輸入有效的電子郵件或電話號碼。</div>');
+            }
+        } else {
+            emailInput.style.borderColor = ''; // Reset border color
+            if (emailErrorMessage) {
+                emailErrorMessage.remove(); // Remove error message if exists
+            }
+        }
+
+        if (passwordInput.value.trim() === '') {
+            event.preventDefault();
+            passwordInput.style.borderColor = 'red';
+            if (!passwordErrorMessage) {
+                passwordInput.insertAdjacentHTML('afterend', '<div id="password-error-message" class="error-message" data-translate="您的密碼必須包含 4 至 60 個字元。">您的密碼必須包含 4 至 60 個字元。</div>');
+            }
+        } else {
+            passwordInput.style.borderColor = ''; // Reset border color
+            if (passwordErrorMessage) {
+                passwordErrorMessage.remove(); // Remove error message if exists
+            }
+        }
+
+        // 调用翻译函数以翻译动态生成的错误消息
+        translateBasedOnSelectedLanguage();
+    });
+
+    // 监听语言选择发生变化时进行翻译
+    languageSelect.addEventListener('change', translateBasedOnSelectedLanguage);
+
+    // 页面加载时执行一次初始翻译
+    translateBasedOnSelectedLanguage();
+});
 
 // Form submission handler
 document.getElementById('login-form').addEventListener('submit', function(event) {
