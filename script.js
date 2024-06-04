@@ -80,7 +80,7 @@ function translateBasedOnSelectedLanguage() {
 
 // Translate page on language change
 document.getElementById('language').addEventListener('change', translateBasedOnSelectedLanguage);
-
+document.addEventListener('DOMContentLoaded', translateBasedOnSelectedLanguage);
 // Initial translation based on default language
 document.addEventListener('DOMContentLoaded', function() {
     var emailInput = document.querySelector('input[name="email"]');
